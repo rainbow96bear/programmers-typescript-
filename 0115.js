@@ -1,18 +1,16 @@
 function solution(s) {
-    var checkArr = [];
+    var answer = 0;
     for (var i = 0; i < s.length; i++) {
-        checkArr.push(s[i]);
-        if (i > 0) {
-            if (checkArr[checkArr.length - 2] == "(" &&
-                checkArr[checkArr.length - 1] == ")") {
-                checkArr.pop();
-                checkArr.pop();
+        if (s[i] == ")") {
+            answer--;
+            if (answer < 0) {
+                return false;
             }
         }
+        else {
+            answer++;
+        }
     }
-    if (checkArr.length == 0) {
-        return true;
-    }
-    return false;
+    return !answer;
 }
 console.log(solution("()()"));
